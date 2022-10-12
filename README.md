@@ -1,3 +1,6 @@
+라우터와 리덕스를 위한 폴더를 따로 구성
+컴포넌트는 Layout 아래에 Form, List 컴포넌트를 구성
+
 1. index.css : css 초기화 코드 입력
 2. index.js : index.css import
 3. configueStore.js : store 및 rootReducer 생성
