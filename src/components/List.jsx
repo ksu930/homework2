@@ -7,16 +7,12 @@ const List = () =>{                                                             
     const todos = useSelector((state) => state.todos)                                   // 18. useSelector 선언 
     const dispatch = useDispatch()
 
-    const onDeleteHandler = (id) =>{                                                // 20. onDeleteHandler선언 및 삭제하기 버튼에 onClick 이벤트로 달아주기
-        dispatch(deleteTodo(id))                                                    // 23. onDeleteHandler에 dispatch 추가 및 todo.id 전달
+    const onDeleteHandler = (id) =>{                                                    // 20. onDeleteHandler선언 및 삭제하기 버튼에 onClick 이벤트로 달아주기
+        dispatch(deleteTodo(id))                                                        // 23. onDeleteHandler에 dispatch 추가 및 todo.id 전달
     }
-
-    const onToggleHandler = (id) =>{                                                // 24. List.js : onToggleHandler 선언 및 취소/완료 버튼에 onClick 이벤트 달아주기
-        dispatch(toggleTodo(id))                                                    // 27. onToggleHandler에 dispatch 추가 및 todo.id 전달
+    const onToggleHandler = (id) =>{                                                    // 24. List.js : onToggleHandler 선언 및 취소/완료 버튼에 onClick 이벤트 달아주기
+        dispatch(toggleTodo(id))                                                        // 27. onToggleHandler에 dispatch 추가 및 todo.id 전달
     }
-
-
-
     return( 
         <StContainer>
             <h2>Working...🔥</h2>

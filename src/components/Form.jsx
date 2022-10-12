@@ -12,17 +12,14 @@ const Form = () =>{
         isDone: false,
     };
     
-    const initialButtonState = StAddButton
     const [todo, setTodo] = useState(initialState);                                                    // 12. useState 선언
-    const [ButtonState, setButtonState] = useState(initialButtonState)                                    
+    const [buttonColor, setButtonColor] = useState("red")                                  
     const dispatch = useDispatch();                                                                    // 16. dispatch 선언
 
     const onChangeHandler = (e) => {                                                                   // 13.onChangeHandler 선언
         const {name, value} = e.target;
         setTodo({...todo, [name]:value});
     }
-    
-
     const onSubmitHandler = (e) => {                                                                   // 17.onSubmitHandler 선언
         e.preventDefault()
         if(todo.title.length === 0 || todo.body.length === 0) return;
@@ -32,38 +29,15 @@ const Form = () =>{
     }
 
     useEffect(() => {
-        
         if(todo.title.length > 0 && todo.body.length > 0){
-
-            return setButtonState(styled.button`
-            border: none;
-            height: 40px;
-            cursor: -webkit-grab;
-            border-radius: 10px;
-            background-color: green;
-            width: 140px;
-            color: #fff;
-            font-weight: 700;
-        `)
+            return setButtonColor("green")
         }
-
         if(todo.title.length === 0 || todo.body.length === 0){
-
-            return setButtonState(styled.button`
-            border: none;
-            height: 40px;
-            cursor: -webkit-grab;
-            border-radius: 10px;
-            background-color: red;
-            width: 140px;
-            color: #fff;
-            font-weight: 700;
-        `)
+            return setButtonColor("red")
         } 
     }, [todo])
 
 
-   
     return(                                                                                            // 10. CSS 및 페이지 상세 구성
         <>
             <StContainer>
@@ -79,7 +53,6 @@ const Form = () =>{
                     value={todo.title}
                     name="title"
                     >
-
                     </StAddInput>
                     <StFormLabel htmlfor="body">내용</StFormLabel>
                     <StAddInput
@@ -88,10 +61,9 @@ const Form = () =>{
                     value={todo.body}
                     name="body"
                     >
-
                     </StAddInput>
                 </StInputGroup>
-                <ButtonState>추가하기</ButtonState>
+                <StAddButton buttonColor={buttonColor}>추가하기</StAddButton>
             </StAddForm>
         </>
     )
@@ -143,7 +115,7 @@ const StAddButton = styled.button`
     height: 40px;
     cursor: -webkit-grab;
     border-radius: 10px;
-    background-color: red;
+    background-color: ${({buttonColor}) => buttonColor};
     width: 140px;
     color: #fff;
     font-weight: 700;

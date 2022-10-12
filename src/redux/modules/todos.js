@@ -53,6 +53,12 @@ const todos = (state=initialState, action) => {
 
         case DELETE_TODO:                                                              // 22. reducer에 DELETE_TODO case 추가
             const delete_todos = state.filter(todo => todo.id !== action.payload)
+            // const delete_todos = state.map(todo => {
+            //     if(todo.id !== action.payload){
+            //         return todo
+            //     } else return null;
+            // })
+            console.log(delete_todos)
             return delete_todos
 
         case TOGGLE_TODO:                                                              // 26. reducer에 TOGGLE_TODO case 추가

@@ -5,7 +5,8 @@ import styled from "styled-components";
 import { updateTodo } from "../redux/modules/todos";
 
 const Detail = () => {                                                                                // 6. 페이지구성
-    const { id } = useParams();                                                                       // 29.  useParams를 이용하여 path에 있는 id 값 확인 및 숫자로 바꿔주기 위해 path_id 선언
+    const { id }  = useParams();
+    console.log(id)                                                                       // 29.  useParams를 이용하여 path에 있는 id 값 확인 및 숫자로 바꿔주기 위해 path_id 선언
     const path_id = Number(id)
     const todos= useSelector(state => state.todos)                                                    // 30. useSelector를 이용하여 state 값 호출
     const navigate = useNavigate()                                                                    // 32. navigate 선언 및 버튼에 onClick 이벤트로 호출
@@ -26,10 +27,12 @@ const Detail = () => {                                                          
         const {name, value} = e.target;
         new_setTodo({...new_todo, [name]:value});
     }
-
+    console.log(new_todo)
     const onSubmitHandler = (e) => {                                                                  
         e.preventDefault()
+        console.log(new_todo)
         if(new_todo.title.length === 0 || new_todo.body.length === 0) {
+          
           alert("제목과 내용을 모두 입력해주세요.");
           return;
         }
@@ -59,7 +62,7 @@ const Detail = () => {                                                          
                     <StAddInput
                     id="title"
                     onChange={onChangeHandler}
-                    //  value={todo.title}
+                    value={new_todo.title}
                     name="title"
                     >
 
@@ -68,7 +71,7 @@ const Detail = () => {                                                          
                     <StAddInput
                     id="body"
                     onChange={onChangeHandler}
-                    // value={todo.body}
+                    value={new_todo.body}
                     name="body"
                     >
                     </StAddInput>
